@@ -1,0 +1,33 @@
+@echo off
+echo Creating a new user 'TestUser' with password 'P@ssw0rd123'...
+net user TestUser P@ssw0rd123 /add
+
+echo Creating a new user group 'TestGroup'...
+net localgroup TestGroup /add
+
+echo Adding 'TestUser' to 'TestGroup'...
+net localgroup TestGroup TestUser /add
+
+echo Displaying all users on the system...
+net user
+
+echo Displaying all groups on the system...
+net localgroup
+
+echo Changing password for 'TestUser' to 'NewP@ss123'...
+net user TestUser NewP@ss123
+
+echo Disabling 'TestUser' account...
+net user TestUser /active:no
+
+echo Enabling 'TestUser' account...
+net user TestUser /active:yes
+
+echo Deleting 'TestUser'...
+net user TestUser /delete
+
+echo Deleting 'TestGroup'...
+net localgroup TestGroup /delete
+
+echo Task completed! User and group management operations executed.
+pause
